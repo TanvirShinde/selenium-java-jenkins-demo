@@ -40,9 +40,9 @@ pipeline {
             steps {
                 sh """
                     mvn -B test \
-                        -Dbrowser=${params.BROWSER} \
-                        -Dheadless=${env.HEADLESS} \
-                        -DsuiteFile=${params.SUITE_FILE}
+                        -Dbrowser=%BROWSER%
+                        -Dheadless=%HEADLESS%
+                        -DsuiteFile=-DsuiteFile=%SUITE_FILE%}
                 """
             }
         }
