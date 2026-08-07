@@ -8,8 +8,11 @@ pipeline {
     }
 
     parameters {
-        choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: 'Browser to run tests on')
-        string(name: 'SUITE_FILE', defaultValue: 'testng.xml', description: 'TestNG suite file to run')
+      //  choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: 'Browser to run tests on')
+      //  string(name: 'SUITE_FILE', defaultValue: 'testng.xml', description: 'TestNG suite file to run')
+    choice(name: 'BROWSER', choices: ['chrome', 'firefox'], description: 'Browser to run tests on')
+    string(name: 'SUITE_FILE', defaultValue: 'testng.xml', description: 'TestNG suite file to run')
+    booleanParam(name: 'HEADLESS', defaultValue: false, description: 'Run browser headless (uncheck to watch it)')
     }
 
     environment {
