@@ -43,9 +43,9 @@ pipeline {
             steps {
                 sh """
                     mvn -B test \
-                        -Dbrowser=%BROWSER%
-                        -Dheadless=%HEADLESS%
-                        -DsuiteFile=-DsuiteFile=%SUITE_FILE%}
+                        -Dbrowser=${params.BROWSER} \
+                        -Dheadless=${env.HEADLESS} \
+                        -DsuiteFile=${params.SUITE_FILE}
                 """
             }
         }
@@ -53,7 +53,7 @@ pipeline {
 
     post {
         always {
-            junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true
+            junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: false
             archiveArtifacts artifacts: 'target/surefire-reports/**', allowEmptyArchive: true
         }
         failure {
