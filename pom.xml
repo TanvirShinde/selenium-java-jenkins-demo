@@ -10,12 +10,11 @@
     <packaging>jar</packaging>
 
     <properties>
-      <maven.compiler.source>21</maven.compiler.source>
-      <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <selenium.version>4.23.0</selenium.version>
-        <testng.version>7.10.2</testng.version>
+        <testng.version>7.11.0</testng.version>
         <webdrivermanager.version>5.9.2</webdrivermanager.version>
         <extentreports.version>5.1.2</extentreports.version>
 
@@ -35,6 +34,13 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.46</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- auto-downloads/matches the right driver binary for installed browser -->

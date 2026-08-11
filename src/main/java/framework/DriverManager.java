@@ -23,7 +23,7 @@ public class DriverManager {
 
     public static void initDriver(String browser) {
         WebDriver driver;
-        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
         switch (browser == null ? "chrome" : browser.toLowerCase()) {
             case "firefox":

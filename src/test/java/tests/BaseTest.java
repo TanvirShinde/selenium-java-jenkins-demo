@@ -1,13 +1,18 @@
 package tests;
 
-import framework.DriverManager;
-import org.openqa.selenium.WebDriver;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
+import framework.DriverManager;
 
 public class BaseTest {
 
@@ -35,8 +40,9 @@ public class BaseTest {
     public void tearDown(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             // hook point: screenshot capture could go here
+            Throwable throwable = result.getThrowable();
             System.out.println("Test failed: " + result.getName()
-                    + " -- " + result.getThrowable());
+                    + " -- " + (throwable != null ? throwable : "Unknown failure"));
         }
         DriverManager.quitDriver();
     }
