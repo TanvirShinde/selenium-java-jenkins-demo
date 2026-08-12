@@ -35,18 +35,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn -B clean compile'
+                bat 'mvn -B clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                sh """
-                    mvn -B test \
-                        -Dbrowser=${params.BROWSER} \
-                        -Dheadless=${env.HEADLESS} \
-                        -DsuiteFile=${params.SUITE_FILE}
-                """
+                bat "mvn -B test -Dbrowser=${params.BROWSER} -Dheadless=${env.HEADLESS} -DsuiteFile=${params.SUITE_FILE}"
             }
         }
     }
